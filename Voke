@@ -1,0 +1,59 @@
+from fpdf import FPDF
+from datetime import date
+
+# Create PDF
+pdf = FPDF()
+pdf.add_page()
+pdf.set_auto_page_break(auto=True, margin=15)
+pdf.set_font("Arial", size=12)
+
+# Letter content
+name = "Kevin Mugambi Kawira"
+address = "[Your Address]"
+email = "[Your Email Address]"
+phone = "[Your Phone Number]"
+today = date.today().strftime("%B %d, %Y")
+
+lines = [
+    name,
+    address,
+    email,
+    phone,
+    today,
+    "",
+    "Human Resources Department",
+    "Kenya Wine Agencies Limited (KWAL)",
+    "[Company Address]",
+    "",
+    "Dear Hiring Manager,",
+    "",
+    "I am writing to express my interest in the Packaging Technical Operator position at KWAL, "
+    "a subsidiary of Heineken. With a background in mechanical engineering and hands-on experience "
+    "in equipment maintenance and CNC machining, I am confident in my ability to support efficient "
+    "packaging operations within your dynamic production environment.",
+    "",
+    "For the past 1 year and 6 months, I have worked as a Maintenance Technician, where I gained solid "
+    "experience in mechanical systems, troubleshooting, and preventive maintenance. In parallel, I have "
+    "developed my skills as a self-taught CNC machinist, deepening my understanding of precision machining "
+    "and production workflows. This combination has equipped me with both the technical aptitude and "
+    "problem-solving mindset essential for a role in packaging operations.",
+    "",
+    "I am particularly drawn to KWAL’s commitment to quality and innovation within the beverage industry. "
+    "I am eager to contribute to your team by ensuring equipment reliability and supporting continuous improvement "
+    "in line with Heineken’s operational excellence standards.",
+    "",
+    "Thank you for considering my application. I welcome the opportunity to discuss how my skills can add value "
+    "to your packaging team.",
+    "",
+    "Yours faithfully,",
+    name
+]
+
+# Add lines to PDF
+for line in lines:
+    pdf.cell(200, 10, txt=line, ln=True)
+
+# Save PDF
+pdf_path = "/mnt/data/Kevin_Mugambi_Kawira_Cover_Letter.pdf"
+pdf.output(pdf_path)
+pdf_path
